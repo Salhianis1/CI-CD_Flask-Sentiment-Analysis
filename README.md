@@ -43,4 +43,4 @@ flask run
 
 ## Result
 6. Open the browser and go to http://127.0.0.1:5000/
-![screenshot of options](https://gitlab.com/salhianisbf1/flask-sentiment-analysis/blob/master/screenshot/Screenshot from 2024-12-13 15-04-10.png)
+![screenshot of options](https://gitlab.com/salhianisbf1/flask-sentiment-analysis/blob/master/screenshot/img.png)
