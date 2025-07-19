@@ -1,0 +1,35 @@
+stages:
+  - Login
+  - Build
+  - Push
+  - Logout
+
+variables:
+  CONTAINER_TEST_IMAGE: flask-sentiment-analysis
+  DOCKERHUB_USERNAME: salhianis20
+
+services:
+  - docker:dind
+
+login_job:
+  stage: Login
+  script:
+    - echo "Logging into DockerHub..."
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+
+build_job:
+  stage: Build
+  script:
+    - docker build -t $DOCKERHUB_USERNAME/$CONTAINER_TEST_IMAGE .
+
+push_job:
+  stage: Push
+  script:
+    - DOCKER_REPO=$DOCKERHUB_USERNAME/$CONTAINER_TEST_IMAGE
+    - docker push $DOCKER_REPO:latest
+
+logout_job:
+  stage: Logout
+  script:
+    - echo "Logging out from DockerHub..."
+    - docker logout
